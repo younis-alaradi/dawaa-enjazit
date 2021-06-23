@@ -1,3 +1,5 @@
+import 'package:dawaa_app/components/product_card.dart';
+import 'package:dawaa_app/favorite_list/Fav_items.dart';
 import 'package:dawaa_app/screens/chat/screens/chat.dart';
 import 'package:dawaa_app/screens/chat/screens/chatHomeScreen.dart';
 import 'package:flutter/material.dart';
@@ -52,18 +54,32 @@ class CustomBottomNavBar extends StatelessWidget {
                     Navigator.pushNamed(context, HomeScreen.routeName),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: ()
-                {
-                  AwesomeDialog(
-                    context: context,
-                    dialogType: DialogType.INFO,
-                    animType: AnimType.BOTTOMSLIDE,
-                    title: 'Coming Soon !!',
-                    desc: 'Under construction',
-                    btnOkOnPress: () {},
-                  )..show();
-                },
+                icon: SvgPicture.asset(
+                  "assets/icons/Heart Icon.svg",
+                  color: MenuState.message == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context,fav_items.routeName);
+                  if(ProductCard.fav.length==0)
+                  {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.INFO,
+                      animType: AnimType.BOTTOMSLIDE,
+                      title: 'No items available in the list',
+                      desc: 'Please add some items and re-visit the page',
+                      //autoHide: Duration(seconds: 5),
+                      btnOkOnPress: ()
+                      {
+                        Navigator.pushNamed(context, HomeScreen.routeName);
+                          (context as Element).markNeedsBuild();
+                      },
+                    )..show();
+
+                  }
+                  },
               ),
               IconButton(
                 icon: SvgPicture.asset(

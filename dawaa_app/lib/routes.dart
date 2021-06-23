@@ -1,3 +1,4 @@
+import 'package:dawaa_app/favorite_list/Fav_items.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dawaa_app/screens/cart/cart_screen.dart';
 import 'package:dawaa_app/screens/chat/screens/chat.dart';
@@ -28,4 +29,5 @@ final Map<String, WidgetBuilder> routes = {
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   Chat.routeName: (context) => Chat(),
+  fav_items.routeName:(context) =>fav_items(),
 };
