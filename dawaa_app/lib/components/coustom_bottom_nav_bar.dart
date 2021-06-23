@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dawaa_app/screens/home/home_screen.dart';
 import 'package:dawaa_app/screens/profile/profile_screen.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 import '../constants.dart';
 import '../enums.dart';
@@ -52,7 +53,17 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: () {},
+                onPressed: ()
+                {
+                  AwesomeDialog(
+                    context: context,
+                    dialogType: DialogType.INFO,
+                    animType: AnimType.BOTTOMSLIDE,
+                    title: 'Coming Soon !!',
+                    desc: 'Under construction',
+                    btnOkOnPress: () {},
+                  )..show();
+                },
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -63,12 +74,14 @@ class CustomBottomNavBar extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, Chat.routeName);
-                  showDialog(
+                  AwesomeDialog(
                     context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text('Under Construction'),
-                    ),
-                  );
+                    dialogType: DialogType.INFO,
+                    animType: AnimType.BOTTOMSLIDE,
+                    title: 'Coming Soon !!',
+                    desc: 'Under construction',
+                    btnOkOnPress: () {},
+                  )..show();
                 },
               ),
               IconButton(

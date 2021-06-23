@@ -32,14 +32,16 @@ dependencies:
   intl: 0.15.7
   image_picker:
   awesome_dialog: ^2.1.0
+  flutter_launcher_icons: ^0.8.1
 
 # flutter pub run flutter_launcher_icons:main
 flutter_icons:
-  image_path: "assets/icons/logo.png"
-  adaptive_icon_foreground: "assets/icons/logo.png"
-  adaptive_icon_background: "#fff"
-  android: true
+  android: "launcher_icon"
   ios: true
+  image_path: "assets/icons/logo_no.png"
+  adaptive_icon_foreground: "assets/icons/logo_no.png"
+  adaptive_icon_background: "#fff"
+
 
 dev_dependencies:
   flutter_test:
