@@ -1,5 +1,5 @@
 import 'package:dawaa_app/components/product_card.dart';
-import 'package:dawaa_app/favorite_list/Fav_items.dart';
+import 'package:dawaa_app/screens/favorite_list/Fav_items.dart';
 import 'package:dawaa_app/screens/chat/screens/chat.dart';
 import 'package:dawaa_app/screens/chat/screens/chatHomeScreen.dart';
 import 'package:flutter/material.dart';

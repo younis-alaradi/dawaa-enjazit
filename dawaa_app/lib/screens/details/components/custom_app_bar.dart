@@ -1,3 +1,5 @@
+import 'package:dawaa_app/all.dart';
+import 'package:dawaa_app/screens/home/components/home_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -29,7 +31,9 @@ class CustomAppBar extends PreferredSize {
                 ),
                 color: Colors.white,
                 padding: EdgeInsets.zero,
-                onPressed: () => Navigator.pop(context),
+                onPressed: () { Navigator.pop(context);
+                HomeHeader.refreshCart_count();
+                },
                 child: SvgPicture.asset(
                   "assets/icons/Back ICon.svg",
                   height: 15,

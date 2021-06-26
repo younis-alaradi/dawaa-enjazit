@@ -12,6 +12,12 @@ class ColorDots extends StatelessWidget {
   }) : super(key: key);
 
   final Product product;
+  static int cart_items =1;
+
+  void _addItems()
+  {
+    cart_items++;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +36,30 @@ class ColorDots extends StatelessWidget {
             ),
           ),
           Spacer(),
+          Text("Quantity : $cart_items"),
+          Spacer(),
           RoundedIconBtn(
             icon: Icons.remove,
-            press: () {},
+            press: ()
+            {
+              if(cart_items!=1 && cart_items>0 )
+              {
+                cart_items--;
+                (context as Element).markNeedsBuild();
+              }
+            },
           ),
           SizedBox(width: getProportionateScreenWidth(20)),
           RoundedIconBtn(
             icon: Icons.add,
             showShadow: true,
-            press: () {},
+            press: ()
+            {
+              _addItems();
+              (context as Element).markNeedsBuild();
+
+
+            },
           ),
         ],
       ),

@@ -1,8 +1,10 @@
+import 'package:dawaa_app/screens/details/components/color_dots.dart';
 import 'package:flutter/material.dart';
 import 'package:dawaa_app/models/Cart.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import '../cart_screen.dart';
 
 class CartCard extends StatelessWidget {
   const CartCard({
@@ -12,8 +14,11 @@ class CartCard extends StatelessWidget {
 
   final Cart cart;
 
+
+
   @override
   Widget build(BuildContext context) {
+
     return Row(
       children: [
         SizedBox(
@@ -40,6 +45,7 @@ class CartCard extends StatelessWidget {
               maxLines: 2,
             ),
             SizedBox(height: 10),
+
             Text.rich(
               TextSpan(
                 text: "\$${cart.product.price}",
@@ -47,14 +53,36 @@ class CartCard extends StatelessWidget {
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
                 children: [
                   TextSpan(
-                      text: " x${cart.numOfItem}",
+                      text: "  x${cart.numOfItem}",
                       style: Theme.of(context).textTheme.bodyText1),
                 ],
               ),
-            )
+            ),
+            Align
+              (
+              alignment: Alignment.center,
+              child:
+              IconButton(
+                  onPressed: ()
+                  {
+                    Cart.carts.removeLast();
+                    print("Removed");
+                    Cart.total_price-=(cart.product.price*ColorDots.cart_items);
+                    //Cart.total_price =Cart.total_price-(cart.product.price*ColorDots.cart_items);
+
+                    (context as Element).markNeedsBuild();
+                  },
+                  icon:Icon(Icons.delete_forever,color: Colors.red,)
+              ),
+            ),
           ],
         )
       ],
     );
+
+    itemsCart()
+    {
+
+    }
   }
 }

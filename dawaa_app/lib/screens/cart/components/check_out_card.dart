@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dawaa_app/models/Cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dawaa_app/components/default_button.dart';
@@ -68,7 +72,7 @@ class CheckoutCard extends StatelessWidget {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text: "\$${Cart.total_price.toStringAsFixed(3)}",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],
@@ -78,7 +82,45 @@ class CheckoutCard extends StatelessWidget {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Check Out",
-                    press: () {},
+                    press: (){
+                      Random Rde = new Random();
+                      int orderTracker = Rde.nextInt(10000);
+                      AwesomeDialog(
+                        context: context,
+                        dialogType: DialogType.QUESTION,
+                        headerAnimationLoop: true,
+                        animType: AnimType.LEFTSLIDE,
+                        title: 'Your Order',
+                        desc: 'Total Cost : \$${Cart.total_price.toStringAsFixed(3)}'
+                            '\nOrder tracker : $orderTracker',
+                        buttonsTextStyle: TextStyle(color: Colors.black),
+                        showCloseIcon: true,
+                        btnOkText: "Confirm",
+                        btnOkOnPress: ()
+                        {
+                          AwesomeDialog(
+                            context: context,
+                            dialogType: DialogType.INFO,
+                            headerAnimationLoop: true,
+                            animType: AnimType.LEFTSLIDE,
+                            title: 'Order No. $orderTracker | added successfully ',
+                            desc: 'Please be patience , Maximum delivery time : 50 minutes ',
+                            buttonsTextStyle: TextStyle(color: Colors.black),
+                            showCloseIcon: false,
+                            autoHide: Duration(seconds: 10),
+
+                          )..show();
+
+                          (context as Element).markNeedsBuild();
+                        },
+                        btnCancelColor: kPrimaryColor,
+                        btnCancelText: "No ",
+                        btnCancelOnPress: ()
+                        {
+                        },
+
+                      )..show();
+                    },
                   ),
                 ),
               ],
